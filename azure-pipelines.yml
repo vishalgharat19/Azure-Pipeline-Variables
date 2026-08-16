@@ -14,3 +14,5 @@ steps:
       echo "My application is $(appname)"
       echo "My environment is $(environment)"
       echo "My country is $(country)"
+      echo "My Current Build is $(Build.BuildId)"
+      echo "My Build ID is $(Build.BuildNumber)"
