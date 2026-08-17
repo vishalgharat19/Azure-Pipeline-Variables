@@ -67,6 +67,6 @@ stages:
             displayName: "Build and Tag Docker Image"
 
           - script: |
-              echo "Docker Images:"
+              echo "Docker Images: "
               docker images
             displayName: "List Docker Images"
