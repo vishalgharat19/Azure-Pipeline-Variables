@@ -2,19 +2,29 @@ trigger:
   - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
-variables:
-  appname: 'myapp'
-  environment: 'production'
-  country : 'India'
+jobs:
+  - job: DisplayVariablesDev
+    displayName: "Display Dev Variables"
 
-steps:
-  - script: |
-      echo "My application is $(appname)"
-      echo "My environment is $(environment)"
-      echo "My country is $(country)"
-      echo "My Current Build is $(Build.BuildId)"
-      echo "My Build ID is $(Build.BuildNumber)"
-      echo "My Build Source Branch is $(Build.SourceBranch)"
-      echo "My Build Repo is $(Build.Repository.Name)"
+    variables:
+      - group: "dev-var"
+
+    steps:
+      - script: |
+          echo "My application is $(appname)"
+          echo "My environment is $(environment)"
+        displayName: "Display Dev Variables"
+
+  - job: DisplayVariablesProd
+    displayName: "Display Prod Variables"
+
+    variables:
+      - group: "prod-var"
+
+    steps:
+      - script: |
+          echo "My application is $(appname)"
+          echo "My environment is $(environment)"
+        displayName: "Display Prod Variables"
